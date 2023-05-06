@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title></title>
+        <style>
+            .product {
+                background-color: #bdf5f4;
+                border: 1px solid yellow;
+                padding: 10px;
+                margin: 10px;
+            }
+        </style>
+        <script>
+            function addProduct(){
+
+                var code = document.getElementById("code").value;
+                var productName = document.getElementById("productName").value;
+                var expiry = document.getElementById("expiry").value;
+
+                var newProduct = `<div class="product">${code}, ${productName}, ${expiry}</div>`;
+                var currentProducts = document.getElementById("productsContainer").innerHTML;
+                document.getElementById("productsContainer").innerHTML = currentProducts + newProduct;
+                
+            }
+        </script>
+    </head>
+    <body>
+        <h1>List of products</h1>
+        <div id="productsContainer">
+
+            <div class="product">101, Ham, 17 Oct 2023</div>
+            <div class="product">102, Ginger Bread, 17 Oct 2023</div>
+            <div class="product">103, Garlic Bread, 17 Oct 2023</div>
+            <div class="product">104, Ham bread, 17 Oct 2023</div>
+
+        </div>
+
+        
+            Product Code <input type="text" id="code"><br>
+            Product Name <input type="text" id="productName"><br>
+            Expiry <input type="text" id="expiry"><br>
+            
+            <button onclick="addProduct()">Save</button>
+
+        
+    </body>
+</html>
