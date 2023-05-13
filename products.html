@@ -1,0 +1,151 @@
+<html>
+
+<head>
+    <title>Products</title>
+
+    <style>
+        h3 {
+            font-family: Arial, Helvetica, sans-serif ;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size:large;
+            background-color: #f5ebd9;
+            /*background-color: #F3E0BE;*/
+            
+        }
+        .container * {
+            margin: 10px;
+            background-color: #f5ebd9;
+            font-size: x-large;
+        }
+        .product {
+            background-color: #f5ebd9;
+            border: 1.5px solid #f8daa3;
+            padding: 10px;
+            margin: 10px;
+        }
+        input[type=text] {
+            border: 1.5px solid #f8daa3;
+            padding: 5px;
+            background-color: #f5f0e7;
+        }
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            }
+    </style>
+
+    <script>
+        function addProduct_click() {
+            let product = getProductFromUI();
+            addProduct(product);
+            updateProductsCountToUI(); 
+        }
+
+        function getProductFromUI() {
+            var code = document.getElementById("code").value;
+            var productName = document.getElementById("productName").value;
+            var expiry = document.getElementById("expiry").value;
+
+            const product = buildNewProductJsonObject(code, productName, expiry);
+            return product;
+        }
+
+        function buildNewProductJsonObject(code, productName, expiry) {
+            var product = {
+                code: code,
+                productName: productName,
+                expiry: expiry
+            };
+            return product;
+        }
+
+        function addProduct(product) {
+            var newProductHtml = createHtmlElementForProduct(product);
+            var currentProductsHtml = getProductsHtml();
+            setProductsHtml(currentProductsHtml + newProductHtml);
+        }
+
+        function createHtmlElementForProduct(product) {
+            return `<div class="product">${product.code}, ${product.productName}, ${product.expiry}</div>`;
+        }
+
+        function getProductsHtml() {
+            return document.getElementById("productsContainer").innerHTML;
+        }
+
+        function setProductsHtml(productsHtml) {
+            document.getElementById("productsContainer").innerHTML = productsHtml;
+        }
+
+        function updateProductsCountToUI() {
+            const productsCount = getProductsCount();
+            document.getElementById("productsCount").innerText = productsCount;
+        }
+
+        function getProductsCount() {
+            const productsCount = document.getElementsByClassName("product").length;
+            return productsCount;
+        }
+        window.onload = ()=> updateProductsCountToUI();
+    </script>
+
+    <script>
+        //sample test case using plain javascript (not using any testing library)
+        function test_IsCorrectProductConversion() {
+
+            //fake object
+            const product = buildNewProductJsonObject('101', "Ham burger", "19 Nov 2029");
+            if (product.code == '101' && product.productName == 'Ham burger' && product.expiry == '19 Nov 2029')
+                console.log("Pass");
+            else
+                console.error("Fail");
+        }
+        test_IsCorrectProductConversion();
+    </script>
+</head>
+
+<body>
+
+    <h3>Add new product</h2>
+    <div class="container">
+    <table>
+        <tr>
+            <td>Product Code</td>
+            <td><input type="text" id="code"></td>
+        </tr>
+        <tr>
+            <td>Product Name</td>
+            <td><input type="text" id="productName"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Expiry</td>
+            <td><input type="text" id="expiry"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button class="button" onclick="addProduct_click()">Save</button></td>
+        </tr>
+    </table>
+    </div>
+
+    <h3>List of products (<span id="productsCount"></span>)</h1>
+    <div id="productsContainer" class="container">
+        <div class="product">101, Ham, 17 Oct 2023</div>
+        <div class="product">102, Ginger Bread, 17 Oct 2023</div>
+        <div class="product">103, Garlic Bread, 17 Oct 2023</div>
+        <div class="product">104, Ham bread, 17 Oct 2023</div>
+    </div>
+</body>
+</html>
