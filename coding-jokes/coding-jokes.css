@@ -1,0 +1,130 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+header {
+    background-color: #4c4cd6;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.left-section {
+    float: left;
+    width: 30%;
+}
+
+.right-section {
+    float: left;
+    width: 70%;
+}
+
+nav {
+    background-color: #F3E0BE;
+    padding: 20px;
+    height: 700px;
+}
+nav ul li {
+    padding: 5px;
+    margin-top: 5px;
+}
+
+article {
+    background-color: whitesmoke;
+    padding: 20px;
+}
+
+.comments-section {
+    padding: 20px;
+}
+
+comment {
+    display: block;
+    padding: 20px;
+    margin-top: 20px;
+    border: 1px solid #eee;
+    border-radius: 6px 6px 6px 6px;
+    background-color: #fbf6f6;
+}
+
+aside {
+    clear: both;
+    padding: 20px;
+    margin-top: 5px;
+    background-color: rgb(248, 212, 212);
+    min-height: 150px;
+}
+
+footer {
+    clear: both;
+    background: #222;
+    color: #eee;
+    text-align: center;
+    padding: 0.5em;
+    font-size: 0.9em;
+
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.button-regular {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+textarea {
+    margin-top: 10px;
+    height: 100px;
+    width: 100%;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.07);
+    border-color: -moz-use-text-color #FFFFFF #FFFFFF -moz-use-text-color;
+    border-image: none;
+    border-radius: 6px 6px 6px 6px;
+    border-style: none solid solid none;
+    border-width: medium 1px 1px medium;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+    color: #555555;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1em;
+    line-height: 1.4em;
+    padding: 5px 8px;
+    transition: background-color 0.2s ease 0s;
+}
+
+textarea:focus {
+    background: none repeat scroll 0 0 #FFFFFF;
+    outline-width: 0;
+}
+
+article p {
+    margin:10px;
+}
+code {
+    font-family: Consolas,"courier new";
+    color: crimson;
+    padding: 2px;
+    font-size: 105%;
+}
+
+tab {
+    margin-left:30px;
+}

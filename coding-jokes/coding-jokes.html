@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Coding Jokes</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="coding-jokes.css">
+    <script>
+        function submitComment() {
+            let currentComments = document.getElementById("commentsList").innerHTML;
+            let newComment = document.getElementById("newComment").value;
+            newComment = newComment.replaceAll("<","&lt;");
+            newComment = newComment.replaceAll(">","&gt;");
+            newComment = "<comment class='comment'>" +  newComment + "</comment>";
+            document.getElementById("commentsList").innerHTML = currentComments + newComment;
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>Coding jokes</h1>
+    </header>
+    <section class="left-section">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Best jokes</a></li>
+                <li><a href="#">Bad jokes</a></li>
+                <li><a href="#">Clunky code samples</a></li>
+                <li><a href="#">Don't laugh challenge</a></li>
+            </ul>
+        </nav>
+        <aside class="related">
+            <h2>Related</h2>
+            <ul>
+                <li><a href="#">Article 1</a></li>
+                <li><a href="#">Article 2</a></li>
+            </ul>
+        </aside>
+    </section>
+    <section class="right-section">
+        <article>
+            <h2>Joke of the day!</h2>
+            <p>
+                <code>
+                    while(alive) {<br>
+                        <tab/>eat();<br>
+                        <tab/>sleep();<br>
+                        <tab/>code();<br>
+                        <tab/>repeat();<br>
+                    }
+                </code>
+            </p>
+            <a href="https://www.google.com/">More information...</a>
+        </article>
+
+        <div id="comments-section" class="comments-section">
+            <h2><s>Cry</s> Laugh here in comments</h2>
+            <textarea id="newComment" cols="100" rows="3" placeholder="Leave a joke here!"></textarea>
+            <br>
+            <button onclick="submitComment()" class="button-regular">Comment</button>
+            <comments-list id="commentsList">
+            </comments-list>
+        </div>
+    </section>
+    <footer>
+        <p>@copyright 2050 by nobody. all rights reversed</p>
+    </footer>
+</body>
+
+</html>
