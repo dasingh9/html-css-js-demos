@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>HTML/CSS</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="more-html-css.css">
+    <script>
+
+var demosArray = [
+{
+title:'Headings',
+code:
+`<h1>I am h1</h1>
+<h2>I am h2</h2>
+<h3>I am h3</h3>
+<h4>I am h4</h4>
+<h5>I am h5</h5>
+<h6>I am h6</h6>`
+}
+,
+{
+title:'Paragraphs',
+code:
+`<p>I am paragraph 1, you can call me para 1.</p>
+<p>I am paragraph 2 (para 2).</p>`
+}
+,
+{
+title:'Ordered Lists',
+code:
+`<ol type="1">
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Milk</li>
+</ol>`
+},
+{
+title:'Unordered Lists',
+code:
+`<ul>
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Milk</li>
+</ul>`
+},
+{
+title:'Emphasis and strong',
+code:
+`Please don't hesitate to place <em>Emphasis</em> on me
+as I am so <strong>Strong</strong>. \n<br>
+<u><b><em>Am I?</em></b></u>
+`
+},
+{
+title:'Line breaks',
+code:
+`One<br>Two<br>Three<br>`
+},
+{
+title:'Hyperlinks - anchor element &lt;a&gt;',
+code:
+`<a href='https://www.w3schools.com/tags/tag_a.asp' target='blank'>Click here</a> read more about hyperlinks!
+`
+},
+{
+title:'Multimedia video elements',
+code:
+`<video controls width="100%">
+    <source src="videos/fun02.mp4" type="video/mp4">
+
+    Download the
+    <a href="videos/fun02.mp4">MP4</a>
+</video>\n
+<a href='https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video'>
+    Read more video element options on developer.mozilla.org
+</a>
+`
+},
+{
+title:'Multimedia video elements',
+code:
+`<video controls width="50%">
+    <source src="videos/video01.mp4" type="video/mp4">
+
+    Download the
+    <a href="/videos/video01.mp4">MP4</a>
+</video>
+`
+},
+{
+title:'Tables',
+code:
+`<table border='1' style='font-size:x-large;'>
+        <tr>
+            <td>0</td>
+            <td>X</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>X</td>
+            <td>0</td>
+            <td>X</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>X</td>
+            <td>0</td>
+        </tr>
+    </table>
+`
+},
+{
+title:'Forms and Input elements',
+code:
+`<form action='processMyForm.asp' method='post'>
+    <div>Your name <input type='text'></div>
+    <div>Password <input type='password'></div>
+    <div>DOB <input type='date'></div>
+    <div>Number of Cars <input type='number'></div>
+    <div>Range <input type='range'></div>
+    <div><input type='submit'></div>
+</form>
+`
+},
+{
+title:'HTML - iframe',
+code:
+``
+},
+{
+title:'HTML - canvas',
+code:
+``
+},
+];
+
+        function makeDemoInputOutputHtmlComponent(demoObject) {
+            let demo = `
+            <div class="demo">
+                <div class="demo-input-container">
+                    <div class="title">${demoObject.title}</div>
+                    <div class="content">
+                        <code><pre>${demoObject.code.replaceAll("<","&lt;").replaceAll(">","&gt;")}</pre></code>
+                    </div>
+                </div>
+                <div class="demo-output-container">
+                    <div class="title">Output</div>
+                    <div class="content">
+                        ${demoObject.code}
+                    </div>
+                </div>
+            </div>`;
+            return demo;
+        }
+
+        function printDemos() {
+            let demosHtml = "";
+            demosArray.forEach((demoObject) => {
+                demosHtml += makeDemoInputOutputHtmlComponent(demoObject);
+            });
+            let demosContainer = document.getElementById("demosContainer");
+            demosContainer.innerHTML = demosHtml;
+        }
+
+        window.onload = () => printDemos();
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>Understanding more HTML elements and styling them!</h1>
+    </header>
+
+    <div id="demosContainer">
+
+        <!--div class="demo">
+            <div class="demo-input-container">
+                <div class="title">Headings</div>
+                <div class="content">
+                    <pre><code>
+                    
+                </code></pre>
+                </div>
+            </div>
+            <div class="demo-output-container">
+                <div class="title">HTML output</div>
+                <div class="content">
+                    Test output
+                </div>
+            </div>
+        </div-->
+
+    </div>
+
+    <!--footer>
+        <p>@copyright 2050 by nobody. all rights reversed</p>
+    </footer-->
+</body>
+
+</html>

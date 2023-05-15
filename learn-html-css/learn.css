@@ -1,0 +1,54 @@
+body {
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+header {
+    background-color: #fa43cf;
+    color: white;
+    text-align: center;
+    padding: 1px;
+}
+.demo {
+    display: flex;
+    background-color: azure;
+    padding: 10px;
+}
+.demo .demo-input-container {
+    width: 50%;
+    background-color: bisque;
+}
+.demo .demo-input-container .title {
+    background-color: rgb(248, 184, 106)!important;
+    padding: 10px;
+    font-weight: bold;
+}
+.demo .demo-input-container .content {
+    padding: 10px;
+    font-size: x-large;
+    word-wrap: break-word;
+}
+.demo .demo-output-container {
+    width: 50%;
+    height: 100pa;
+    background-color: rgb(185, 251, 229);
+}
+.demo .demo-output-container .title {
+    background-color: rgb(5, 217, 147);
+    padding: 10px;
+    font-weight: bold;
+}
+.demo .demo-output-container .content {
+    padding: 10px;
+}
+
+footer {
+    background: #222;
+    color: #eee;
+    text-align: center;
+    font-size: 0.9em;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
