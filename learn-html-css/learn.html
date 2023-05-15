@@ -4,7 +4,7 @@
 <head>
     <title>HTML/CSS</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="more-html-css.css">
+    <link rel="stylesheet" href="learn.css">
     <script>
 
 var demosArray = [
@@ -75,6 +75,7 @@ code:
 <a href='https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video'>
     Read more video element options on developer.mozilla.org
 </a>
+Video source: <a target='_blank' href='https://www.pexels.com/'>https://www.pexels.com</a>
 `
 },
 {
@@ -86,6 +87,7 @@ code:
     Download the
     <a href="/videos/video01.mp4">MP4</a>
 </video>
+Video source: <a target='_blank' href='https://www.pexels.com/'>https://www.pexels.com</a>
 `
 },
 {
@@ -113,13 +115,29 @@ code:
 {
 title:'Forms and Input elements',
 code:
-`<form action='processMyForm.asp' method='post'>
-    <div>Your name <input type='text'></div>
-    <div>Password <input type='password'></div>
-    <div>DOB <input type='date'></div>
-    <div>Number of Cars <input type='number'></div>
-    <div>Range <input type='range'></div>
-    <div><input type='submit'></div>
+`<h1>Donate to your city</h1>
+<form action='processMyForm.asp' method='post'>
+    Your name <input type='text'>
+    <br><br>
+    Password &nbsp;<input type='password'>
+    <br><br>
+    DOB &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type='date'>
+    <br><br>
+    Donate Cash <input type='number'>
+    <br><br>
+    Donate EVs 
+    <select>
+        <option>1</option>
+        <option>10</option>
+        <option>100</option>
+        <option>1000</option>
+        <option>10000</option>
+        <option>9999999</option>
+    </select>
+    <br><br>
+    Range <input type='range'>
+    <br><br>
+    <input type='submit' value="Donate">
 </form>
 `
 },
@@ -131,7 +149,15 @@ code:
 {
 title:'HTML - canvas',
 code:
-``
+`
+<canvas id="myCanvas" width="500" height="100" 
+    style="border:1px solid #000000; background:yellow">
+</canvas>
+
+<br><br>
+
+Checkout Canvas examples on <a href='https://www.w3schools.com/html/html5_canvas.asp'>w3schools</a>
+`
 },
 ];
 
