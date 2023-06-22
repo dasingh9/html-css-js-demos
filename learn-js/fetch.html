@@ -1,0 +1,24 @@
+<!-- very basic fetch example demonstrating real-world promises -->
+<html>
+<body>
+    <h2>Check the Dev Inspector Console</h2>
+    <script>
+        //api call using async/await syntax
+        async function makeApiCall() {
+            var response = await fetch('https://reqres.in/api/users');
+            var json = await response.json();
+            console.log("JSON data:", json.data);
+        }
+
+        makeApiCall();
+        
+        
+        //api call using promise then function
+        /*promise.then(response => response.json()) // .json() also returns a promise
+            .then(json => console.log("JSON data:", json.data[0]))     //success case
+            .catch(error => console.error(error)) // error case
+        */
+    </script>
+</body>
+
+</html>
