@@ -1,0 +1,73 @@
+<html>
+
+<head>
+    <title>Hello</title>
+    <script src="services/posts-service.js"></script>
+
+    <script>
+        const postsService = new PostsService();
+
+        async function test_getAllPosts(limit) {
+            var posts = await postsService.getAllPosts(limit);
+            if (posts.length == 10)
+                console.info("test_getAllPosts: PASS");
+            else
+                console.error(`test_getAllPosts: FAIL (didn't get ${limit} records)`);
+            
+            console.log('getAllPosts -> json response data:', posts);
+        }
+
+        async function test_createNewPost(post) {
+            var jsonResponse = await postsService.createNewPost(post);
+            if (jsonResponse.title == 'The Studio')
+                console.info("test_createNewPost: PASS");
+            else
+                console.error("test_createNewPost: FAIL");
+
+            console.log('createNewPost -> json response data:', jsonResponse);
+        }
+
+        async function test_updatePost(post) {
+            var jsonResponse = await postsService.updatePost(post);
+            if (jsonResponse.title == 'The Studio')
+                console.info("test_updatePost: PASS");
+            else
+                console.error("test_updatePost: FAIL");
+
+            console.log('updatePost -> json response data:', jsonResponse);
+        }
+
+        
+        window.onload = async () => {
+            
+            //TEST CASE 1: GET ALL POSTS
+            const limit = 10;
+            await test_getAllPosts(limit);
+
+            //TEST CASE 2: CREATE NEW POST
+            const samplePost = {
+                title: 'The Studio',
+                body: 'Something funny',
+                userId: 1,
+            };
+            await test_createNewPost(samplePost);
+
+            //TEST CASE 3: UPDATE AN EXISTING POST
+            const post = {
+                id: 101,
+                title: 'The Studio',
+                body: 'Something funny',
+                userId: 1,
+            };
+            await test_updatePost(post);
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <h1>Hello world</h1>
+</body>
+
+</html>
