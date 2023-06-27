@@ -3,6 +3,9 @@
 <head>
     <title>Products</title>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
     <style>
         header {
             background-color: #faba43;
@@ -10,33 +13,57 @@
             text-align: center;
             padding: 1px;
         }
+
         h3 {
-            font-family: Arial, Helvetica, sans-serif ;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         body {
             font-family: Arial, Helvetica, sans-serif;
-            font-size:large;
+            font-size: large;
             background-color: #f5ebd9;
             /*background-color: #F3E0BE;*/
-            
+
         }
-        .container * {
+
+        .products-container * {
+            margin: 10px;
+            background-color: #f5ebd9;
+            font-size: x-large;
+            text-decoration: underline;
+        }
+
+        .underline {
+            text-decoration: underline;
+            color: red;
+        }
+
+        .productsContainer * {
             margin: 10px;
             background-color: #f5ebd9;
             font-size: x-large;
         }
+
+        .ProductsContainer * {
+            margin: 10px;
+            background-color: #f5ebd9;
+            font-size: x-large;
+        }
+
+
         .product {
             background-color: #f5ebd9;
             border: 1.5px solid #f8daa3;
             padding: 10px;
             margin: 10px;
         }
+
         input[type=text] {
             border: 1.5px solid #f8daa3;
             padding: 5px;
             background-color: #f5f0e7;
         }
+
         .button {
             background-color: #4CAF50;
             border: none;
@@ -48,14 +75,54 @@
             font-size: 16px;
             margin: 4px 2px;
             cursor: pointer;
-            }
+        }
+
+        .label::after {
+            content: ">";
+            color: red;
+        }
+
+        .spinner-hide {
+            display: none;
+        }
     </style>
 
     <script>
+
+        function showNewProductSpinner() {
+            document.getElementById("product-spinner").style.display = "block";
+        }
+
+        function hideNewProductSpinner() {
+            document.getElementById("product-spinner").style.display = "none";
+        }
+
         function addProduct_click() {
-            let product = getProductFromUI();
-            addProduct(product);
-            updateProductsCountToUI(); 
+
+            showNewProductSpinner();
+
+            //await delay(5000); //todo
+
+            try {
+                let product = getProductFromUI();
+                addProduct(product);
+                clearNewProductForm();
+                updateProductsCountToUI();
+            }
+            catch(err) {
+                console.log("Unable to save product");
+            }
+
+            hideNewProductSpinner();
+
+        }
+
+        async function delay(ms) {
+            //todo
+        }
+
+        function clearNewProductForm() {
+            //todo
         }
 
         function getProductFromUI() {
@@ -83,7 +150,7 @@
         }
 
         function createHtmlElementForProduct(product) {
-            return `<div class="product">${product.code}, ${product.productName}, ${product.expiry}</div>`;
+            return `<div class="product underline">${product.code}, ${product.productName}, ${product.expiry}</div>`;
         }
 
         function getProductsHtml() {
@@ -103,7 +170,7 @@
             const productsCount = document.getElementsByClassName("product").length;
             return productsCount;
         }
-        window.onload = ()=> updateProductsCountToUI();
+        window.onload = () => updateProductsCountToUI();
     </script>
 
     <script>
@@ -125,35 +192,64 @@
     <header>
         <h1>Products - Inventory Management</h1>
     </header>
-    <h3>Add new product</h2>
-    <div class="container">
-    <table>
-        <tr>
-            <td>Product Code</td>
-            <td><input type="text" id="code"></td>
-        </tr>
-        <tr>
-            <td>Product Name</td>
-            <td><input type="text" id="productName"></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Expiry</td>
-            <td><input type="text" id="expiry"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><button class="button" onclick="addProduct_click()">Save</button></td>
-        </tr>
-    </table>
-    </div>
 
-    <h3>List of products (<span id="productsCount"></span>)</h1>
-    <div id="productsContainer" class="container">
-        <div class="product">101, Ham, 17 Oct 2023</div>
-        <div class="product">102, Ginger Bread, 17 Oct 2023</div>
-        <div class="product">103, Garlic Bread, 17 Oct 2023</div>
-        <div class="product">104, Ham bread, 17 Oct 2023</div>
-    </div>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Add New Product
+    </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <table>
+                                <tr>
+                                    <td class="label">Product Code</td>
+                                    <td><input type="text" id="code"></td>
+                                </tr>
+                                <tr>
+                                    <td class="label">Product Name</td>
+                                    <td><input type="text" id="productName"></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="label">Expiry</td>
+                                    <td><input type="text" id="expiry"></td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div id="product-spinner" class="spinner-border text-primary spinner-hide" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                          </div>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-success" onclick="addProduct_click()">Save product</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <h3 class="underline">List of products (<span id="productsCount"></span>)</h1>
+            <div id="productsContainer" class="container">
+                <div class="product">101, Ham, 17 Oct 2023</div>
+                <div class="product">102, Ginger Bread, 17 Oct 2023</div>
+                <div class="product">103, Garlic Bread, 17 Oct 2023</div>
+                <div class="product">104, Ham bread, 17 Oct 2023</div>
+            </div>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+                crossorigin="anonymous"></script>
 </body>
+
 </html>
