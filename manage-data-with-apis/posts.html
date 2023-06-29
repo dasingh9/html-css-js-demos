@@ -5,7 +5,7 @@
     <script src="services/posts-service.js"></script>
 
     <script>
-        const postsService = new PostsService();
+        const postsService = new PostsService('https://jsonplaceholder.typicode.com');
 
         async function test_getAllPosts(limit) {
             var posts = await postsService.getAllPosts(limit);

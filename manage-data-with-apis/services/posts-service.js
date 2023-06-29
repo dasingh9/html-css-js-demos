@@ -1,14 +1,18 @@
 const PostsService = class {
 
+    constructor (apiBaseUrl) {
+        this.apiBaseUrl = apiBaseUrl;
+    }
+
     async getAllPosts(limit) {
 
-        var response = await fetch(`https://jsonplaceholder.typicode.com/posts?_limit=${limit}`);
+        var response = await fetch(`${this.apiBaseUrl}/posts?_limit=${limit}`);
         var posts = await response.json();
         return posts;
     }
 
     async createNewPost(post) {
-        var response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+        var response = await fetch(`${this.apiBaseUrl}/posts`, {
             method: 'POST',
             body: JSON.stringify(post),
             headers: {
@@ -21,7 +25,7 @@ const PostsService = class {
     }
 
     async updatePost(post) {
-        var response = await fetch(`https://jsonplaceholder.typicode.com/posts?id=${post.id}`, {
+        var response = await fetch(`${this.apiBaseUrl}/posts?id=${post.id}`, {
             method: 'PUT',
             body: JSON.stringify(post),
             headers: {
@@ -34,7 +38,7 @@ const PostsService = class {
     }
 
     async deletePost(id) {
-        var response = await fetch(`https://jsonplaceholder.typicode.com/posts?id=${id}`, {
+        var response = await fetch(`${this.apiBaseUrl}/posts?id=${id}`, {
             method: 'DELETE'
         });
         var jsonResponse = await response.json();
