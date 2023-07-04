@@ -1,12 +1,12 @@
 const GamesService = class { 
-    constructor(apiKey, apiHost) {
+    constructor(apiKey, baseUrl, apiHost='') {
         this.apiKey = apiKey;
+        this.baseUrl = baseUrl;
         this.apiHost = apiHost;
-        this.baseUrl = "https://" + this.apiHost;
     }
     
     async getAllGames() {
-        const url = this.baseUrl + '/api/games';
+        const url = this.baseUrl + '/games';
         
         const options = {
             method: 'GET',
