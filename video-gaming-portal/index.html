@@ -13,29 +13,14 @@
 
     <script>
 
-        function addGameToPage(game) {
-            var template = document.getElementById("game-card-template").content.cloneNode(true);
-            template.querySelector('.card-title').innerText = game.title;
-            template.querySelector('.card-text').innerText = game.short_description;
-            template.querySelector('.genre').innerText = game.genre;
-            template.querySelector('.card-img-top').src = game.thumbnail;
-            template.querySelector('.game-url').href = game.game_url;
+        const gamesService = new GamesService(apiInfo.apiKey, apiInfo.baseUrl, apiInfo.apiHost);
 
-            document.querySelector('#games-list').appendChild(template);
-        }
-
-        
-
-        function showErrorMessage(error) {
-            var divErrorMessage= document.getElementById("error-messages");
-                divErrorMessage.innerText = "Unable to load games due to an error. Please try again later!"
-                divErrorMessage.style.display = "block";
+        window.onload = () => {
+            showGames();
         }
 
         async function showGames() {
-
             try {
-                const gamesService = new GamesService(apiInfo.apiKey, apiInfo.apiHost);
                 var games = await gamesService.getAllGames();
             }
             catch(error) {
@@ -47,23 +32,19 @@
             for(let game of games) {
                 addGameToPage(game);
             }
-
-
-            /*for (let i = 0; i < 100; i++) {
-                addGameToPage();
-            }*/
         }
 
-        window.onload = () => {
+        function addGameToPage(game) {
+            var template = document.getElementById("game-card-template").content.cloneNode(true);
+            template.querySelector('.card-title').innerText = game.title;
+            template.querySelector('.card-text').innerText = game.short_description;
+            template.querySelector('.genre').innerText = game.genre;
+            template.querySelector('.card-img-top').src = game.thumbnail;
+            template.querySelector('.game-url').href = game.game_url;
 
-            showGames();
-
+            document.querySelector('#games-list').appendChild(template);
         }
-
-
     </script>
-
-
 </head>
 
 <body>
@@ -95,11 +76,9 @@
         </div>
     </template>
 
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
 
 </body>
-
 </html>

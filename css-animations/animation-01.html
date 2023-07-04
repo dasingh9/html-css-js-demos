@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Animation</title>
+
+    <style>
+
+        .animation{
+            animation-duration: 3s;
+            animation-iteration-count: 3;
+            animation-name: slidein;
+            border: 1px solid red;
+            padding: 100px;
+            background-color: red;
+            width: 100px;
+            height: 100px;
+        }
+
+        @keyframes slidein {
+            from {
+                
+                background-color: red;
+            }
+            10% {
+                background-color: blue;
+                width: 150px;
+            }
+            20% {
+                background-color: green;
+                width: 180px;
+            }
+            30% {
+                background-color: pink;
+                width: 200px;
+            }
+            50% {
+                background-color: cyan;
+                width: 250px;
+            }
+            70% {
+                background-color: purple;
+                width: 200px;
+
+            }
+            to {
+                width: 100px;
+                background-color: yellow;
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+    
+    <div class="animation">Hello world!</div>
+
+    <br>
+
+    <div>Hello world!</div>
+
+
+</body>
+</html>
