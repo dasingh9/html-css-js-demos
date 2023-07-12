@@ -31,7 +31,7 @@ export default class CalculatorController {
             let number2 = parseInt(req.query.num2);
             let result = calculator.multiply(number1, number2);
 
-            if (isNaN(sum))
+            if (isNaN(result))
                 throw new Error("Invalid number received in the input");
 
             console.log(result)
